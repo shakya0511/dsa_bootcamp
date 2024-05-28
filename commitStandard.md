@@ -11,7 +11,7 @@ Use a prefix to categorize commits:
 - chore: Other changes that don't modify src or test files
 
 
-exmaple 
+examaple 
 
 - feat: Add user authentication feature
 - fix: Resolve login issue with invalid tokens
