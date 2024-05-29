@@ -2,53 +2,41 @@
 
 def Solution1(array):
 
-    output = []
-    sorted = []
+    SortedArray = [ 0 for _ in array]
 
-    for i in array:
-        sqr = i*i 
-        output.append(sqr)
+    for idx in range(len(array)):
+         value = array[idx]
+         SortedArray[idx] = value * value
 
+    SortedArray.sort()
 
+    return SortedArray
+
+     
 
 def Solution2(array):
 
-    zeroArray =  [0 for _ in range(len(array))]
+    SortedArray =  [0 for _ in range(len(array))]
 
-    SIdx = 0
-    EIdx = len(array) - 1
-  
-    while SIdx < len(array) and EIdx > 0:
-        Fnum = (array[SIdx] * array[SIdx])
-        Lnum = (array[EIdx ] * array[EIdx ])
-        if Fnum > Lnum:
-            if array[SIdx] < array[EIdx]:
-                zeroArray[EIdx] = array[SIdx] * array[SIdx]
-                if array[SIdx] > array[EIdx]:
-                    zeroArray[EIdx] = array[EIdx] * array[EIdx]
-            SIdx = SIdx + 1
-                  
-             
-        if Fnum < Lnum:
-            if array[SIdx] < array[EIdx]:
-                zeroArray[EIdx] = array[EIdx] * array[EIdx]
-                if array[SIdx] > array[EIdx]:
-                    zeroArray[EIdx] = array[SIdx] * array[SIdx]
-            EIdx = EIdx - 1
+    smallerIdx = 0
+    largerIdx = len(array) - 1
 
-        if Fnum == Lnum:
-            SIdx += 1
-            EIdx -= 1
+    for idx in reversed(range(len(array))):
+        smallerIdxValue = array[smallerIdx]
+        largerIdxValue = array[largerIdx]
 
-    return []
+        if abs(smallerIdxValue) > abs(largerIdxValue):
+            SortedArray[idx] = smallerIdxValue * smallerIdxValue
+            smallerIdx += 1
+        else:
+            SortedArray[idx] = largerIdxValue * largerIdxValue
+            largerIdx -= 1
+
+    return SortedArray
 
 
 
 
-
-
-# array = [1,2,3,5,6,8,9]
-# array = [-2, -1]
+# problem
 array = [-7,-5,-4,3,6,8,9]
-
-Solution2(array)
+Solution1(array)
