@@ -11,7 +11,6 @@ def Solution1(array):
 
 
 
-
 def Solution2(array):
 
     zeroArray =  [0 for _ in range(len(array))]
