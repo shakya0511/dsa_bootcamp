@@ -2,12 +2,17 @@
 
 def Solution1(array):
 
-    output = []
-    sorted = []
+    SortedArray = [ 0 for _ in array]
 
-    for i in array:
-        sqr = i*i 
-        output.append(sqr)
+    for idx in range(len(array)):
+         value = array[idx]
+         SortedArray[idx] = value * value
+
+    SortedArray.sort()
+
+    return SortedArray
+
+    
 
 
 
@@ -16,32 +21,35 @@ def Solution2(array):
 
     zeroArray =  [0 for _ in range(len(array))]
 
-    SIdx = 0
-    EIdx = len(array) - 1
-  
-    while SIdx < len(array) and EIdx > 0:
-        Fnum = (array[SIdx] * array[SIdx])
-        Lnum = (array[EIdx ] * array[EIdx ])
-        if Fnum > Lnum:
-            if array[SIdx] < array[EIdx]:
-                zeroArray[EIdx] = array[SIdx] * array[SIdx]
-                if array[SIdx] > array[EIdx]:
-                    zeroArray[EIdx] = array[EIdx] * array[EIdx]
-            SIdx = SIdx + 1
-                  
-             
-        if Fnum < Lnum:
-            if array[SIdx] < array[EIdx]:
-                zeroArray[EIdx] = array[EIdx] * array[EIdx]
-                if array[SIdx] > array[EIdx]:
-                    zeroArray[EIdx] = array[SIdx] * array[SIdx]
-            EIdx = EIdx - 1
+    Idx1 = 0
+    Idx2 = len(array) - 1
+    ZeroIdx = len(zeroArray) - 1
 
-        if Fnum == Lnum:
-            SIdx += 1
-            EIdx -= 1
+    # Learning : deal with negative integers saperately 
 
-    return []
+    while Idx1 < len(array) -1 :
+        sqr1 = (array[Idx1] * array[Idx1])
+        sqr2 = (array[Idx2] * array[Idx2])
+
+        if sqr1 < sqr2:
+                zeroArray[ZeroIdx]= sqr2
+                Idx2 -= 1
+                ZeroIdx -= 1
+
+        if sqr1 > sqr2:
+
+            if array[Idx1] and array[Idx2] > 0:   
+                zeroArray[ZeroIdx] = sqr1
+                Idx1 += 1
+                ZeroIdx -= 1            
+            if array[Idx1] and array[Idx2] < 0:
+                zeroArray[ZeroIdx]= sqr1
+                Idx1 += 1
+                ZeroIdx -= 1
+
+    return zeroArray
+
+    
 
 
 
@@ -52,4 +60,4 @@ def Solution2(array):
 # array = [-2, -1]
 array = [-7,-5,-4,3,6,8,9]
 
-Solution2(array)
+Solution1(array)
