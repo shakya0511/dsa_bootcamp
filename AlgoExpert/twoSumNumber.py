@@ -48,7 +48,7 @@ def Solution3(array, targetSum):
             init_val += 1
         elif( currentSum > targetSum):
             end_val -= 1
-    return []
+    return ["Test"]
     
             
 array = [3,5,-4,8,11,1,-1,6]
@@ -56,4 +56,4 @@ targetSum = 10
 
 # Solution1(array, targetSum)
 # Solution2(array, targetSum)
-# Solution3(array, targetSum)
+Solution3(array, targetSum)

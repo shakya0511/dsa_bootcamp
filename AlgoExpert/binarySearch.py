@@ -50,3 +50,4 @@ array = [0, 22, 23, 34, 54, 44, 90]
 target = 44
 
 Solution2(array, target)
+print("run")
